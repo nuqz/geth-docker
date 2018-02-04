@@ -1,7 +1,7 @@
 version: '3'
 services:
   miner:
-    image: geth-node
+    build: ./node
     networks:
       ethnet:
         ipv4_address: 172.92.0.9
