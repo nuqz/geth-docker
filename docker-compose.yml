@@ -1,0 +1,25 @@
+version: '3'
+services:
+  miner:
+    image: geth-node
+    networks:
+      ethnet:
+        ipv4_address: 172.92.0.9
+    command: 
+      - ./bin/geth
+      - --datadir=./data
+      - --networkid=
+      - --identity=PRIVATE-MINER
+      - --mine
+      - --minerthreads=1
+      - --etherbase=
+    volumes:
+      - ./miner:/ethereum/data
+      - ./config:/ethereum/config
+networks:
+  ethnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.92.0.0/24
